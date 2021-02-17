@@ -1,6 +1,5 @@
 import 'package:hive/hive.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mockito/annotations.dart';
 
-class BinaryReaderMock extends Mock implements BinaryReader {}
-
-class BinaryWriterMock extends Mock implements BinaryWriter {}
+@GenerateMocks([BinaryReader, BinaryWriter])
+void _f() {}

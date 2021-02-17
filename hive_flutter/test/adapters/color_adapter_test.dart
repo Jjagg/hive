@@ -4,13 +4,13 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/src/adapters/color_adapter.dart';
 import 'package:mockito/mockito.dart';
 
-import '../mocks.dart';
+import '../mocks.mocks.dart';
 
 void main() {
   group('ColorAdapter', () {
     test('.read()', () {
       const color = Color(0xFF000000);
-      final BinaryReader binaryReader = BinaryReaderMock();
+      final BinaryReader binaryReader = MockBinaryReader();
       when(binaryReader.readInt()).thenReturn(color.value);
 
       final readColor = ColorAdapter().read(binaryReader);
@@ -20,7 +20,7 @@ void main() {
 
     test('.write()', () {
       const color = Color(0xFF000000);
-      final BinaryWriter binaryWriter = BinaryWriterMock();
+      final BinaryWriter binaryWriter = MockBinaryWriter();
 
       ColorAdapter().write(binaryWriter, color);
       verify(binaryWriter.writeInt(color.value));
